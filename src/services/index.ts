@@ -1,0 +1,2 @@
+export {auth as firebaseAuth, database as firebaseDatabase, firestore as firebaseFirestore, analytics as firebaseAnalytics, storage as firebaseStorage} from './cloud';
+export {app as firebaseApplication} from './cloud';
