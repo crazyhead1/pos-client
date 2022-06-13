@@ -1,5 +1,5 @@
 import React from 'react';
-import {Colors} from 'modules/Common/constants/Colors';
+import {Colors} from '../../../ui/common/colors';
 
 interface ComponentProps {
   fill?: string;

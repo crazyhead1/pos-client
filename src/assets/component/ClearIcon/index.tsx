@@ -1,4 +1,4 @@
-import {Colors} from 'modules/Common/constants/Colors';
+import {Colors} from '../../../ui/common/colors';
 import React from 'react';
 import {createUseStyles} from 'react-jss';
 
