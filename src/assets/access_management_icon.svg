@@ -1,0 +1,12 @@
+<svg id="admin_panel_settings_black_24dp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_10562" data-name="Group 10562">
+    <rect id="Rectangle_6875" data-name="Rectangle 6875" width="24" height="24" fill="none"/>
+  </g>
+  <g id="Group_10564" data-name="Group 10564">
+    <g id="Group_10563" data-name="Group 10563">
+      <circle id="Ellipse_1022" data-name="Ellipse 1022" cx="1.12" cy="1.12" r="1.12" transform="translate(15.88 14.38)" fill="#222b45"/>
+      <path id="Path_15411" data-name="Path 15411" d="M17,17.5c-.73,0-2.19.36-2.24,1.08a2.729,2.729,0,0,0,4.48,0C19.19,17.86,17.73,17.5,17,17.5Z" fill="#222b45" fill-rule="evenodd"/>
+      <path id="Path_15412" data-name="Path 15412" d="M18,11.09V6.27L10.5,3,3,6.27v4.91A10.213,10.213,0,0,0,10.5,21a9.166,9.166,0,0,0,1.6-.55A6,6,0,1,0,18,11.09ZM11,17a5.766,5.766,0,0,0,.23,1.62,6.587,6.587,0,0,1-.73.3A8.208,8.208,0,0,1,5,11.18V7.58l5.5-2.4L16,7.58v3.51A6,6,0,0,0,11,17Zm6,4a4,4,0,1,1,4-4A4,4,0,0,1,17,21Z" fill="#222b45" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+  <g id="Group_7817" data-name="Group 7817" transform="translate(-261.898 569.898) rotate(-90)">
+    <circle id="Avatar" cx="14" cy="14" r="14" transform="translate(541.898 261.898)" fill="#6135fb"/>
+    <g id="upload" transform="translate(550.072 268.893)">
+      <path id="Path_488" data-name="Path 488" d="M16.158,9.591a.855.855,0,0,1-.659-.282L11.45,5.26,7.4,9.309A.932.932,0,1,1,6.082,7.991l4.708-4.708a.91.91,0,0,1,1.318,0l4.708,4.708a.91.91,0,0,1,0,1.318A.855.855,0,0,1,16.158,9.591Z" transform="translate(-5.8 -3)" fill="#fff"/>
+      <path id="Path_489" data-name="Path 489" d="M17.5,15.211a.945.945,0,0,1-1-1V4a1,1,0,0,1,2,0v10.21A.945.945,0,0,1,17.5,15.211Z" transform="translate(-11.851 -1.202)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+import React from 'react';
+
+const Checkmark: React.FC = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 10 9">
+      <defs>
+        <clipPath id="clip-path">
+          <path
+            id="_Icon_Color"
+            data-name="🎨 Icon Color"
+            d="M6.039.429A1.111,1.111,0,0,1,7.556.2,1.025,1.025,0,0,1,7.79,1.668L4.431,6.1a1,1,0,0,1-1.493.115L.317,3.677a1.023,1.023,0,0,1,0-1.483,1.113,1.113,0,0,1,1.535,0L3.5,3.785Z"
+            transform="translate(0 1)"
+            fill="#fff"
+          />
+        </clipPath>
+      </defs>
+      <g id="Icon" transform="translate(0 1)">
+        <rect
+          id="_06_Checkbox_8_Icon_1_Checkmark_background"
+          data-name="06) Checkbox/8) Icon/1)Checkmark background"
+          width="8"
+          height="8"
+          fill="none"
+        />
+        <g id="Group_116" data-name="Group 116">
+          <path
+            id="_Icon_Color-2"
+            data-name="🎨 Icon Color"
+            d="M8.039-1.571A1.111,1.111,0,0,1,9.556-1.8,1.025,1.025,0,0,1,9.79-.332,39.955,39.955,0,0,0,6.576,2.983,20.643,20.643,0,0,0,4.431,6.1a1,1,0,0,1-1.493.115L.317,3.677a1.023,1.023,0,0,1,0-1.483,1.113,1.113,0,0,1,1.535,0L3.5,3.785A16.465,16.465,0,0,1,5.35,1.059,25.424,25.424,0,0,1,8.039-1.571Z"
+            transform="translate(0 1)"
+            fill="#fff"
+          />
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+export default Checkmark;

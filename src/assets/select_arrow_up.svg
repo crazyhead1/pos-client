@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10" height="6" viewBox="0 0 10 6">
+	<defs>
+		<clipPath id="clip-path">
+			<path id="_Icon_Сolor" data-name="🎨 Icon Сolor" d="M9,6a1,1,0,0,1-.707-.293L4.988,2.4,1.695,5.582A1,1,0,0,1,.305,4.143L4.3.281a1,1,0,0,1,1.4.012l4,4A1,1,0,0,1,9,6" fill="#fff" />
+		</clipPath>
+	</defs>
+	<g id="Group_225" data-name="Group 225" transform="translate(0 0)">
+		<path id="_Icon_Сolor-2" data-name="🎨 Icon Сolor" d="M9,6a1,1,0,0,1-.707-.293L4.988,2.4,1.695,5.582A1,1,0,0,1,.305,4.143L4.3.281a1,1,0,0,1,1.4.012l4,4A1,1,0,0,1,9,6" transform="translate(0)" fill="#fff" />
+	</g>
+</svg>
