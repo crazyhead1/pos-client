@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <rect id="Rectangle_6679" data-name="Rectangle 6679" width="38" height="38" rx="19" fill="#f5f7fb"/>
+  <g id="cloud-fill" transform="translate(5.1 3.318)">
+    <path id="Path_15065" data-name="Path 15065" d="M7.71,6.818A9.753,9.753,0,0,1,14,4.5a8.946,8.946,0,0,1,9.04,7.909A5.649,5.649,0,0,1,28,17.926,5.69,5.69,0,0,1,22.2,23.5H6.617A6.493,6.493,0,0,1,0,17.14a6.424,6.424,0,0,1,5.149-6.206A7.252,7.252,0,0,1,7.711,6.818Z" fill="#64dbf7" fill-rule="evenodd"/>
+  </g>
+  <g id="Group_10233" data-name="Group 10233" transform="translate(7275 4970)">
+    <path id="Line_643" data-name="Line 643" d="M0,7.535a1,1,0,0,1-1-1V0A1,1,0,0,1,0-1,1,1,0,0,1,1,0V6.535A1,1,0,0,1,0,7.535Z" transform="translate(-7256 -4946.182)" fill="#64dbf7"/>
+    <path id="Path_15066" data-name="Path 15066" d="M0,8.535a1,1,0,0,1-.674-.262A1,1,0,0,1-.738,6.86L2.114,3.737-.732.682A1,1,0,0,1-.682-.732a1,1,0,0,1,1.413.05l3.474,3.73A1,1,0,0,1,4.213,4.4L.738,8.209A1,1,0,0,1,0,8.535Z" transform="translate(-7252.232 -4940.915) rotate(90)" fill="#64dbf7"/>
+    <path id="Line_643-2" data-name="Line 643" d="M-1,2.983V-4A1,1,0,0,1,0-5,1,1,0,0,1,1-4V2.983Z" transform="translate(-7256 -4946.182)" fill="#f5f7fb"/>
+  </g>
+</svg>

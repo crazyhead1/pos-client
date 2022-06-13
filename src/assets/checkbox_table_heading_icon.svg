@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="19" height="19" viewBox="0 0 19 19">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="_Icon_Color" data-name="🎨 Icon Color" d="M6.039.429A1.111,1.111,0,0,1,7.556.2,1.025,1.025,0,0,1,7.79,1.668L4.431,6.1a1,1,0,0,1-1.493.115L.317,3.677a1.023,1.023,0,0,1,0-1.483,1.113,1.113,0,0,1,1.535,0L3.5,3.785Z" transform="translate(0 1)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Group_7455" data-name="Group 7455" transform="translate(-398.5 -236.5)">
+    <g id="_5_Checkbox_1_Checked_1_Default" data-name="5) Checkbox/1) Checked/1) Default" transform="translate(399 237)">
+      <rect id="_Color" data-name="🎨 Color" width="18" height="18" rx="3" fill="#6135fb" stroke="#6135fb" stroke-width="1"/>
+      <g id="Icon" transform="translate(7.939 3.49) rotate(45)">
+        <rect id="_06_Checkbox_8_Icon_1_Checkmark_background" data-name="06) Checkbox/8) Icon/1)Checkmark background" width="8" height="8" fill="none"/>
+      </g>
+    </g>
+    <line id="Line_308" data-name="Line 308" x2="8" transform="translate(404 246)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57" height="57" viewBox="0 0 57 57">
+  <defs>
+    <filter id="Avatar" x="0" y="0" width="57" height="57" filterUnits="userSpaceOnUse">
+      <feOffset dy="0.5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#606170" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_10206" data-name="Group 10206" transform="translate(-1016.998 -137.498)">
+    <g transform="matrix(1, 0, 0, 1, 1017, 137.5)" filter="url(#Avatar)">
+      <circle id="Avatar-2" data-name="Avatar" cx="25" cy="25" r="25" transform="translate(3.5 3)" fill="#fff" stroke="#d6dbe5" stroke-width="1"/>
+    </g>
+    <path id="Union_29" data-name="Union 29" d="M0,24.428a3.477,3.477,0,0,1,3.7-3.193H22.417a3.477,3.477,0,0,1,3.7,3.193c0,5.709-7.357,9.153-13.06,9.153S0,30.137,0,24.428Zm0,0v0Zm26.121,0v0ZM4.172,8.889a8.889,8.889,0,1,1,8.889,8.889A8.889,8.889,0,0,1,4.172,8.889Z" transform="translate(1032.419 149.8)" fill="#696f81"/>
+  </g>
+</svg>
