@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15.393" height="15.393" viewBox="0 0 15.393 15.393">
+  <g id="hospital" transform="translate(0.25 0.25)">
+    <path id="Path_15036" data-name="Path 15036" d="M11.25,21.375h.993v.993H11.25Z" transform="translate(-6.782 -12.439)" fill="#3f465d" stroke="#3f465d" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+    <path id="Path_15037" data-name="Path 15037" d="M16.875,21.375h.993v.993h-.993Z" transform="translate(-9.925 -12.439)" fill="#3f465d" stroke="#3f465d" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+    <path id="Path_15038" data-name="Path 15038" d="M22.5,21.375h.993v.993H22.5Z" transform="translate(-13.068 -12.439)" fill="#3f465d" stroke="#3f465d" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+    <path id="Path_15039" data-name="Path 15039" d="M14.28,15.025V3.359H12.046V1.125H5.1V3.359H2.863V15.025H1.125v.993H16.018v-.993ZM6.089,2.118h4.964V7.082H6.089Zm7.2,12.907H9.068V13.039H8.075v1.986H3.856V4.352H5.1V8.075h6.95V4.352h1.241Z" transform="translate(-1.125 -1.125)" fill="#3f465d" stroke="#3f465d" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+    <path id="Path_15040" data-name="Path 15040" d="M16.611,5.625h-.993v.993h-.993v.993h.993V8.6h.993V7.611H17.6V6.618h-.993Z" transform="translate(-8.668 -3.639)" fill="#3f465d" stroke="#3f465d" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5"/>
+  </g>
+</svg>

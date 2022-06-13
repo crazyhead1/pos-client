@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="_Icon_Сolor" data-name="🎨 Icon Сolor" d="M9,0a1,1,0,0,0-.707.293L4.988,3.6,1.7.418A1,1,0,0,0,.305,1.857l4,3.862a1,1,0,0,0,1.4-.012l4-4A1,1,0,0,0,9,0" transform="translate(0)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Group_7284" data-name="Group 7284" transform="translate(-579 -80)">
+    <g id="Rectangle_1481" data-name="Rectangle 1481" transform="translate(579 80)" fill="#6135fb" stroke="#6135fb" stroke-width="1">
+      <path d="M0,0H32A10,10,0,0,1,42,10V32A10,10,0,0,1,32,42H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" stroke="none"/>
+      <path d="M1,.5H32A9.5,9.5,0,0,1,41.5,10V32A9.5,9.5,0,0,1,32,41.5H1A.5.5,0,0,1,.5,41V1A.5.5,0,0,1,1,.5Z" fill="none"/>
+    </g>
+    <g id="_27_Icon_chevron-down" data-name="27) Icon/chevron-down" transform="translate(595 98.5)">
+      <g id="Group_225" data-name="Group 225" transform="translate(0 0)">
+        <path id="_Icon_Сolor-2" data-name="🎨 Icon Сolor" d="M9,0a1,1,0,0,0-.707.293L4.988,3.6,1.7.418A1,1,0,0,0,.305,1.857l4,3.862a1,1,0,0,0,1.4-.012l4-4A1,1,0,0,0,9,0" transform="translate(0)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

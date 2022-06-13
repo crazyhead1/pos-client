@@ -1,0 +1,29 @@
+import React from 'react';
+
+const CalendarIcon: React.FC = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21.5" viewBox="0 0 20 21.5">
+      <g transform="translate(0 1)">
+        <rect width="20" height="18" rx="1" transform="translate(0 2.5)" fill="rgba(255,255,255,0)" />
+        <path
+          d="M2,2V16H18V2H2M1,0H19a1,1,0,0,1,1,1V17a1,1,0,0,1-1,1H1a1,1,0,0,1-1-1V1A1,1,0,0,1,1,0Z"
+          transform="translate(0 2.5)"
+          fill="#222b45"
+        />
+        <path d="M19,1H0V-1H19Z" transform="translate(0.5 7)" fill="#222b45" />
+        <path
+          d="M0,4A1,1,0,0,1-1,3V0A1,1,0,0,1,0-1,1,1,0,0,1,1,0V3A1,1,0,0,1,0,4Z"
+          transform="translate(5.5)"
+          fill="#222b45"
+        />
+        <path
+          d="M0,4A1,1,0,0,1-1,3V0A1,1,0,0,1,0-1,1,1,0,0,1,1,0V3A1,1,0,0,1,0,4Z"
+          transform="translate(14.5)"
+          fill="#222b45"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export default CalendarIcon;
