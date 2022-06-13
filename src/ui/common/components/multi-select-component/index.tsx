@@ -7,7 +7,7 @@ import {
 import checkIcon from 'assets/check_icon.svg';
 import deselectIcon from 'assets/deselect_icon.svg';
 import searchIcon from 'assets/search_icon.svg';
-import ChevronArrowDown from 'assets/component/ChevronArrowDown.svg';
+import ChevronArrowDown from '../../../../assets/component/ChevronArrowDown';
 
 const MultiSelectComponent: React.FC<ComponentProps> = ({
   options,

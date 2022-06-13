@@ -1,7 +1,7 @@
 import React from 'react';
 import PhoneInput from 'react-phone-number-input';
-import PasswordEye from 'assets/component/PasswordEye.svg';
-import PasswordEyeSlashed from 'assets/component/PasswordEyeSlashed.svg';
+import PasswordEye from '../../../../assets/component/PasswordEye';
+import PasswordEyeSlashed from '../../../../assets/component/PasswordEyeSlashed';
 import helpIcon from 'assets/help_icon.svg';
 import {ComponentProps, useStylesFromThemeFunction} from './KlaimInput';
 import {Colors} from '../../colors';

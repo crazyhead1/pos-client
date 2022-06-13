@@ -3,7 +3,7 @@ import {createUseStyles} from 'react-jss';
 import uploadFileCloudIcon from 'assets/upload_file_cloud_icon.svg';
 import {useDropzone} from 'react-dropzone';
 import {ThemeInterface} from '../../../../interfaces/theme';
-import RemoveIcon from 'assets/component/RemoveIcon.svg';
+import RemoveIcon from '../../../../assets/component/RemoveIcon';
 import {Colors} from '../../colors';
 import IconButton from '../icon-button';
 import {Accept} from 'react-dropzone';
