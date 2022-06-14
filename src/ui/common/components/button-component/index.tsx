@@ -1,6 +1,7 @@
 import React from 'react';
 import {createUseStyles} from 'react-jss';
 import {ThemeInterface} from '../../../../interfaces/theme';
+import { Colors } from '../../colors';
 
 interface ComponentProps {
   children?: JSX.Element[] | JSX.Element;
@@ -15,7 +16,7 @@ interface ComponentProps {
 const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface) => {
   return {
     default: {
-      minWidth: 152,
+      minWidth: 100,
       minHeight: 42,
       borderRadius: 10,
       background: 'none',
@@ -30,22 +31,21 @@ const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface) => {
     primary: {
       borderWidth: 1,
       borderStyle: 'solid',
-      backgroundColor: theme.formButton.background.secondary,
-      borderColor: theme.formButton.border.secondary,
-      color: theme.formButton.color.primary,
+      backgroundColor: Colors.purple,
+      color: Colors.white,
     },
     primaryOutline: {
-      borderWidth: 1,
+      borderWidth: 2,
       borderStyle: 'solid',
-      backgroundColor: theme.formButton.background.primary,
-      borderColor: theme.formButton.border.secondary,
-      color: theme.formButton.color.tertiary,
+      backgroundColor: 'inherit',
+      borderColor: Colors.purple,
+      color: Colors.black,
     },
     secondary: {
-      alignItems: 'center',
-      cursor: 'pointer',
-      display: 'flex',
-      height: '100%',
+      borderWidth: 1,
+      borderStyle: 'solid',
+      color: Colors.black,
+      backgroundColor: Colors.grayLight,
     },
     disable: {
       '&:hover': {

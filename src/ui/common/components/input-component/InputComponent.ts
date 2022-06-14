@@ -4,7 +4,7 @@ import {Country} from 'react-phone-number-input';
 import {ThemeInterface} from '../../../../interfaces/theme';
 
 export interface ComponentProps {
-  children: JSX.Element[] | JSX.Element;
+  children?: JSX.Element[] | JSX.Element;
   label?: string;
   name?: string;
   placeholder?: string;
@@ -141,28 +141,6 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
       alignItems: 'center',
       overflow: 'hidden',
       width: '100%',
-    },
-    inputContainerFocus: {
-      borderColor: theme.formElement.border.secondary,
-    },
-    inputContainerDefault: {
-      backgroundColor: theme.formElement.background.primary,
-      borderColor: theme.formElement.border.primary,
-    },
-    inputSecondVariant: {
-      backgroundColor: theme.formElement.background.secondary,
-    },
-    inputContainerValidated: {
-      borderColor: theme.formElement.border.validated,
-    },
-    inputContainerError: {
-      borderColor: theme.formElement.border.error,
-    },
-    labelError: {
-      color: theme.formElement.color.error,
-    },
-    labelValidated: {
-      color: theme.formElement.color.validated,
     },
     labelDefault: {
       color: Colors.grayLabel,

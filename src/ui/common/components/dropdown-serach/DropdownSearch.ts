@@ -21,7 +21,7 @@ export interface ComponentProps {
 
 export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface) => {
   return {
-    klaimSelectLabel: {
+    SelectLabel: {
       color: '#222b45',
       fontSize: 13,
       fontWeight: 700,
@@ -35,18 +35,6 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
         fontWeight: 'normal',
         fontSize: '13px',
       },
-    },
-    inputError: {
-      color: theme.formElement.color.error,
-      fontSize: 12,
-      marginBottom: 0,
-      marginTop: 0,
-    },
-    labelError: {
-      color: theme.formElement.color.error,
-    },
-    labelSuccess: {
-      color: theme.formElement.color.success,
     },
     container: {
       width: '100%',
