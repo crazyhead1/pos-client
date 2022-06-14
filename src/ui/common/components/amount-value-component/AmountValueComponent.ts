@@ -1,5 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { ThemeInterface } from "../../../../interfaces/theme";
+import { Colors } from "../../colors";
 
 export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface) => {
     return {
@@ -11,7 +12,10 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
             fontWeight: 600,
         },
         value: {
-            fontSize: 15,
+            fontSize: 75,
+            fontWeight: 150,
+            marginTop: -25,
+            color: Colors.purple,
         },
         containerColumn: {
             flexDirection: 'column',
@@ -23,4 +27,4 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
             marginRight: 8,
         },
     };
-});
+  });

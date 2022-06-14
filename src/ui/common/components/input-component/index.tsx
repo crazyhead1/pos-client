@@ -2,10 +2,10 @@ import React from 'react';
 import PhoneInput from 'react-phone-number-input';
 import PasswordEye from '../../../../assets/component/PasswordEye';
 import PasswordEyeSlashed from '../../../../assets/component/PasswordEyeSlashed';
-import helpIcon from 'assets/help_icon.svg';
-import {ComponentProps, useStylesFromThemeFunction} from './KlaimInput';
+import helpIcon from '../../../../assets/help_icon.svg';
+import {ComponentProps, useStylesFromThemeFunction} from './InputComponent';
 import {Colors} from '../../colors';
-import KlaimTooltip from '../tooltip-component';
+import TooltipComponent from '../tooltip-component';
 
 const InputComponent: React.FC<ComponentProps> = ({
   label,
@@ -34,17 +34,6 @@ const InputComponent: React.FC<ComponentProps> = ({
     return error && touched ? classes.passwordError : classes.passwordValid;
   };
 
-  const inputContainerClass = (v: string) => {
-    switch (v) {
-      case 'secondary': {
-        return classes.inputSecondVariant;
-      }
-      default: {
-        return '';
-      }
-    }
-  };
-
   React.useEffect(() => {
     setChange(value);
     if (onChange) onChange(value);
@@ -55,39 +44,17 @@ const InputComponent: React.FC<ComponentProps> = ({
     if (onChange) onChange(inputValue);
   };
 
-  const validateInput = (touched?: boolean, error?: boolean) => {
-    if (touched && error) {
-      return classes.inputContainerError;
-    }
-    if (touched) {
-      return classes.inputContainerValidated;
-    }
-    return classes.inputContainerDefault;
-  };
-
-  const validateLabel = (touched?: boolean, error?: boolean) => {
-    if (touched && error) {
-      return classes.labelError;
-    }
-    if (touched) {
-      return classes.labelValidated;
-    }
-    // return classes.labelDefault;
-  };
-
   return (
     <div className={`${classes.contentContainer} ${containerClassName} `}>
       {label && (
-        <label className={`${classes.label} ${validateLabel(isTouched, isError)}`} htmlFor={name}>
+        <label className={`${classes.label}`} htmlFor={name}>
           {label}
           {optional && <span>(Optional)</span>}
         </label>
       )}
 
       <div
-        className={`${classes.inputContainer} ${inputContainerClass(variant)} ${
-          isFocus ? classes.inputContainerFocus : validateInput(isTouched, isError)
-        } `}
+        className={`${classes.inputContainer}`}
       >
         {(() => {
           switch (type) {
@@ -114,7 +81,7 @@ const InputComponent: React.FC<ComponentProps> = ({
                   </div>
                   {showTooltip && (
                     <div>
-                      <KlaimTooltip requirements={requirements} icon={helpIcon} />
+                      <TooltipComponent requirements={requirements} icon={helpIcon} />
                     </div>
                   )}
                 </div>
@@ -128,7 +95,7 @@ const InputComponent: React.FC<ComponentProps> = ({
                   value={value}
                   onChange={handleChange}
                   placeholder={placeholder}
-                  className={`${classes.inputNumber} ${isTouched ? validateInput(isTouched, isError) : ''}`}
+                  className={`${classes.inputNumber}`}
                 />
               );
             default:
@@ -156,7 +123,7 @@ const InputComponent: React.FC<ComponentProps> = ({
       </div>
       {showTooltip && (
         <div>
-          <KlaimTooltip requirements={requirements} icon={helpIcon} />
+          <TooltipComponent requirements={requirements} icon={helpIcon} />
         </div>
       )}
     </div>
