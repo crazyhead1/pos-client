@@ -1,5 +1,6 @@
 import React from 'react';
-import {useStylesFromThemeFunction} from './ValueComponent';
+import Currency from '../currency';
+import {useStylesFromThemeFunction} from './AmountValueComponent';
 
 interface ComponentProps {
   direction?: 'row' | 'column';
@@ -7,14 +8,14 @@ interface ComponentProps {
   value: string;
 }
 
-const ValueComponent: React.FC<ComponentProps> = ({direction = 'row', label, value}) => {
-  const classes = useStylesFromThemeFunction();
+const AmountValueComponent: React.FC<ComponentProps> = ({direction = 'row', label, value}) => {
+    const classes = useStylesFromThemeFunction();
   return (
     <div className={`${classes.container} ${direction === 'row' ? classes.containerRow : classes.containerColumn}`}>
       <span className={`${classes.label} ${direction === 'row' && classes.labelRow}`}>{label}</span>
-      <span className={`${classes.value}`}>{value}</span>
+      <span className={`${classes.value}`}><Currency/>{value}</span>
     </div>
   );
 };
 
-export default ValueComponent;
+export default AmountValueComponent;

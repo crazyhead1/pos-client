@@ -7,7 +7,7 @@ import {
 } from './DropdownSearch';
 import {InputActionMeta} from 'react-select';
 
-const KlaimDropdownSearch: React.FC<ComponentProps> = ({
+const DropdownSearch: React.FC<ComponentProps> = ({
   label,
   options,
   value,
@@ -43,9 +43,7 @@ const KlaimDropdownSearch: React.FC<ComponentProps> = ({
     <div className={classes.container}>
       {label && (
         <div
-          className={`${classes.klaimSelectLabel} ${isError && classes.labelError} ${
-            isTouched && !isError && classes.labelSuccess
-          }`}
+          className={`${classes.SelectLabel}`}
         >
           {label}
           {isOptional && <span>(Optional)</span>}
@@ -73,4 +71,4 @@ const KlaimDropdownSearch: React.FC<ComponentProps> = ({
   );
 };
 
-export default KlaimDropdownSearch;
+export default DropdownSearch;

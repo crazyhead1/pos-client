@@ -1,9 +1,10 @@
 import React from 'react';
+import { POSEngine } from '../ui/pos-engine';
 
 function App() {
   return (
     <div>
-        <h1>POS</h1>
+      <POSEngine />
     </div>
   );
 }
