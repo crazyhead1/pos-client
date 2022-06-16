@@ -8,6 +8,9 @@ export interface ComponentProps {
   options?: {value: any; label: string | undefined}[];
   isLoading?: boolean;
   products: any[];
+  handleCancel?: () => void;
+  handleConfirm?: () => void;
+  handlePrint?: () => void;
   disabled?: boolean;
 }
 
@@ -56,6 +59,7 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
         alignItems: 'space-around',
         flexWrap: 'wrap',
         paddingTop: '10%',
+        paddingLeft: '8%',
         justifyContent: 'space-around',
         width: '100%',
         minWidth: 'fit-content',

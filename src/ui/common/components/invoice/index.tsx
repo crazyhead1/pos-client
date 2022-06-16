@@ -13,6 +13,9 @@ export const Invoice: React.FC<ComponentProps> = ({
   options,
   isLoading,
   products,
+  handleCancel,
+  handleConfirm,
+  handlePrint,
   disabled
 }) => {
   const classes = useStylesFromThemeFunction();
@@ -46,30 +49,18 @@ export const Invoice: React.FC<ComponentProps> = ({
     setTax(tempSubtotal * DEFAULT_TAX_RATE);
     setTotal(tempSubtotal + tax);
     setDiscount((tempSubtotal+tax) * DEFAULT_DISCOUNT_RATE);
-    setAmountDue(800);
+    setAmountDue(Math.round((tempSubtotal + tax) - ((tempSubtotal+tax) * DEFAULT_DISCOUNT_RATE)));
     return renderedProducts;
-  }
-
-  const handlePrint = () => {
-
-  }
-
-  const handleConfirm = () => {
-
-  }
-
-  const handleCancel = () => {
-
   }
 
   const paidAmountChangeHandler = (amount: number) => {
     setAmountPaid(amount);
-    setAmountReturned(amount - amountDue);
+    setAmountReturned(Math.round(amount - amountDue));
   }
 
   return (
     <div className={classes.totalBillContainer}>
-        <div className={`${classes.equallyDistantRow}`}>
+        <div className={`${classes.equallyDistantColumn}`}>
             <AmountValueComponent
                 label='Amount Due'
                 value={`${amountDue}`}
@@ -107,7 +98,7 @@ export const Invoice: React.FC<ComponentProps> = ({
         <div className={classes.equallyDistantRow}>
             <ValueComponent
                 label='Returned'
-                value={`${amountReturned}`}
+                value={`${Math.round(amountReturned)}`}
                 direction='column'
             />
             <ValueComponent

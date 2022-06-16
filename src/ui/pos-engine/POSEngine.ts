@@ -116,6 +116,14 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
       position: 'relative',
       display: 'flex',
       flexDirection: 'row',
+    },
+    iconWrapper:{
+      width: '20px',
+      height: '20px',
+      cursor: 'pointer',
+    },
+    colorRed: {
+      color: Colors.red,
     }
   };
 });
