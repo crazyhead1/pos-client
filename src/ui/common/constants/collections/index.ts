@@ -4,4 +4,5 @@ export const PRODUCTS_COLLECTION = 'products';
 export const ORDERS_COLLECTION = 'orders';
 export const SUPPLIERS_COLLECTION = 'suppliers';
 export const CATEGORIES_COLLECTION = 'categories';
-export const Stores_COLLECTION = 'stores';
+export const STORES_COLLECTION = 'stores';
+export const LOGS_COLLECTION = 'logs';

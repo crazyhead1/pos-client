@@ -6,8 +6,12 @@ import DropdownSearch from '../common/components/dropdown-serach';
 import InputComponent from '../common/components/input-component';
 import { Invoice } from '../common/components/invoice';
 import Table from '../common/components/table';
-import ValueComponent from '../common/components/value-component';
+import RemoveIcon from '../../assets/component/RemoveIcon';
+import SuspendIcon from '../../assets/component/CloseIcon';
 import { ComponentProps, useStylesFromThemeFunction } from './POSEngine'
+import { Colors } from '../common/colors';
+import toast from 'react-hot-toast';
+import { addLog } from '../../services/cloud/firebase/logging';
 
 export const POSEngine: React.FC<ComponentProps> = ({
   label,
@@ -20,22 +24,33 @@ export const POSEngine: React.FC<ComponentProps> = ({
   const [selectedProduct, setSelectedProduct] = React.useState(null as any);
   const [productOptions, setProductOptions] = React.useState([] as {label: string, value: Product}[]);
   const [addedProducts, setAddedProducts] = React.useState([] as any[]);
+  const [updateTrigger, setUpdateTrigger] = React.useState(false);
   const classes = useStylesFromThemeFunction();
 
-  if(products){
-    setProductOptions(products.map(product => ({label: product.name, value: product})));
-  }
+  React.useEffect(() => {
+    if(products){
+      setProductOptions(products.map(product => ({label: product.name, value: product})));
+    }
+  },[])
   
   const productChange = (product: any) => {
     setSelectedProduct(product);
-    setQuantity(product.unitsInStock);
+    setQuantity(product.unitsInStock | 0);
   }
-  const onQuantityChange = (qntity: number) => {
-    console.log(qntity);
-    setQuantity(qntity);
+
+  const handleRemoveProduct = (product: any) => {
+    setAddedProducts(addedProducts.filter(addedProduct => addedProduct !== product));
+  }
+
+  const handleIncreaseQuantity = () => {
+
+  }
+  const handleDecreaseQuantity = () => {
+    
   }
 
   const renderAddedProducts = () => {
+    setUpdateTrigger(!updateTrigger);
     // render only body
     const renderedProducts = addedProducts.map(product => {
       const { name, unitPrice, quantity } = product;
@@ -46,6 +61,11 @@ export const POSEngine: React.FC<ComponentProps> = ({
           <td>{quantity}</td>
           <td>{unitPrice}</td>
           <td>{total}</td>
+          <td>
+            <div className={classes.equallyDistantRow}>
+              <div className={classes.iconWrapper} onClick={()=>handleRemoveProduct(product)}><RemoveIcon fill={Colors.red} /></div>
+            </div>
+          </td>
           </tr>
       );
     });
@@ -54,10 +74,62 @@ export const POSEngine: React.FC<ComponentProps> = ({
   }
 
   const handleProductAdd = () => {
+    if(!selectedProduct)
+      return;
     isLoading = true;
-    setAddedProducts([...addedProducts, {...selectedProduct, quantity}]);
+    addedProducts.forEach(product => {
+      if(product.name === selectedProduct.name){
+        product.quantity = (parseInt(product.quantity)+ parseInt(quantity.toString()));
+        isLoading = false;
+        return;
+      }
+    })
+    if(isLoading)
+      setAddedProducts([...addedProducts, {...selectedProduct, quantity}]);
     renderAddedProducts();
   }
+  
+  const handleCancel = () => {
+    setAddedProducts([]);
+    toast('Order Cancelled');
+  }
+
+  const handlePrint = async() => {
+    try {
+      // confirm order here
+
+      // print here 
+
+      toast.loading('Printing...', {duration: 10000});
+      //remove this line after confirm order and print
+      throw new Error("Error");
+      
+    } catch (error) {
+      const logResult =await addLog({
+        message: error.message,
+        path: `${__filename}-handlePrint`,
+      });
+      toast.error('Error while printing invoice'); 
+    }
+  }
+
+  const handleConfirm = async() => {
+    try {
+      // confirm order here
+
+      toast.success('Order Confirmed');
+      //remove this line after confirm order
+      throw new Error("Error");
+      
+    } catch (error) {
+      const logResult =await addLog({
+        message: error.message,
+        path: `${__filename}-handleConfirm`,
+      });
+      toast.error('Error while confirming order'); 
+    }
+  }
+
   return (
     <div className={classes.container} >
       <div className={classes.innerContainerLeft}>
@@ -66,7 +138,7 @@ export const POSEngine: React.FC<ComponentProps> = ({
               label="Product"
               options={productOptions}
               placeholder='Search Product'
-              onChange={setSelectedProduct}
+              onChange={productChange}
             />
             <div className={classes.row}>
               <InputComponent
@@ -76,7 +148,7 @@ export const POSEngine: React.FC<ComponentProps> = ({
                 variant='primary'
                 value={`${quantity}`}
                 placeholder='0'
-                onChange={onQuantityChange}
+                onChange={setQuantity}
               />
               <ButtonComponent
                 variant='primary'
@@ -86,7 +158,7 @@ export const POSEngine: React.FC<ComponentProps> = ({
         </div>
         <div className={classes.productSuggestionContainer}>
           <Table
-            tableHeadings={['Product', 'Quantity', 'Price', 'Total']}
+            tableHeadings={['Product', 'Quantity', 'Price', 'Total','Actions']}
             renderBody={renderAddedProducts}
             loading={isLoading}
           />
@@ -95,6 +167,9 @@ export const POSEngine: React.FC<ComponentProps> = ({
       <div className={classes.innerContainerRight}>
         <Invoice
           products={addedProducts}
+          handleCancel={handleCancel}
+          handleConfirm={handleConfirm}
+          handlePrint={handlePrint}
         />
       </div>
     </div>
