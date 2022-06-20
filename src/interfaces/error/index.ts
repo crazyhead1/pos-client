@@ -1,4 +1,4 @@
-export interface Error {
+export default interface Error {
     message: string;
     stack?: string;
     errorCode?: string;
