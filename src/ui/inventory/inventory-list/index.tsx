@@ -6,43 +6,18 @@ import Table from '../../common/components/table'
 import { useStylesFromThemeFunction } from './InventoryList';
 import toast from 'react-hot-toast';
 import { Modal } from 'react-bootstrap';
+import {getProductsFromInventory } from '../../../parser/inventory';
 
 interface ComponentProps {
   products?: any[];
 }
 
-const InventoryList: React.FC<ComponentProps> = ({
-  products = [
-    {
-      id: "qwertyuiop",
-      name: 'Product 1',
-      unitsInStock: 10,
-      unitPrice: 10,
-      category: 'Category 1',
-      description: 'Product 1 description',
-    },
-    {
-      id: "asdfghjkl",
-      name: 'Product 2',
-      unitsInStock: 20,
-      unitPrice: 20,
-      category: 'Category 2',
-      description: 'Product 2 description',
-    },
-    {
-      id: "zxcvbnm",
-      name: 'Product 3',
-      unitsInStock: 30,
-      unitPrice: 30,
-      category: 'Category 3',
-      description: 'Product 3 description',
-    }
-  ]
-}) => {
+const InventoryList: React.FC<ComponentProps> = (props) => {
   const classes = useStylesFromThemeFunction();
   const [tableHeadings, setTableHeadings] = React.useState(['id','Title', 'Units in Stock', 'Price', 'category', 'description','Actions'] as string[]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState({} as any);
+  const [products, setProducts] = React.useState(props?.products as any[] | [] as any[]);
   //const [showEditModal, setShowEditModal] = React.useState(false);
 
   // const handleCloseEditModal = () => setShowEditModal(false);
@@ -50,6 +25,13 @@ const InventoryList: React.FC<ComponentProps> = ({
   //   setSelectedProduct(product);
   //   setShowEditModal(true);
   // }
+  React.useEffect(() => {
+    getProductsFromInventory().then(res => {
+      console.log(res);
+      setProducts(res);
+      renderTableData();
+    })
+  }, []);
 
   const handleRemoveProduct = (product: any) => {
     try{
@@ -80,7 +62,7 @@ const InventoryList: React.FC<ComponentProps> = ({
       }
   }
   const renderTableData = () => {
-    return products.map(product => {
+    return products?.map(product => {
       return (
         <tr key={product.id} onDoubleClick={()=>handleEditProduct(product)}>
           <td>{product.id}</td>
@@ -100,7 +82,7 @@ const InventoryList: React.FC<ComponentProps> = ({
     });
   }
 
-  if(products.length !== 0){
+  if(products?.length !== 0){
     renderTableData();
   }
 

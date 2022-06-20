@@ -1,12 +1,15 @@
 import { useFormik } from 'formik'
 import React from 'react'
 import { Collapse } from 'react-bootstrap';
+import toast from 'react-hot-toast';
+import { addOneArea } from '../../../parser/area';
+import { gettowns } from '../../../parser/town';
+import { addLog } from '../../../services/cloud/firebase/logging';
 import { Colors } from '../../common/colors';
 import ButtonComponent from '../../common/components/button-component';
 import { ComponentProps, useStylesFromThemeFunction } from './AreaForm'
 
 const AreaForm: React.FC<ComponentProps> = ({
-  onSubmit,
   onChange,
   product,
   options,
@@ -14,52 +17,21 @@ const AreaForm: React.FC<ComponentProps> = ({
 }) => {
   const classes = useStylesFromThemeFunction();
   const [showShippingFfield, setShowShippingField] = React.useState(false);
-  
-  const getTowns = () => {
+  const [towns, setTowns] = React.useState([]);
 
+  const getTowns = async () => {
     //call get product categories api here
-
-    return [
-      {
-        id: "qwertyuiop",
-        name: 'Town 1',
-      },
-      {
-        id: "asdfghjkl",
-        name: 'Town 2',
-      },
-      {
-        id: "zxcvbnm",
-        name: 'Town 3',
-      }
-    ]
+    const res = await gettowns().then(res => {
+      setTowns(res?.map(town => <option key={town.id} value={town.id}>{town.name}</option>))
+    }).catch(err => {
+      toast.error(err.message || 'Something went wrong while getting towns');
+      addLog({message:err.message || 'Something went wrong while getting towns', path:'/area/index.tsx/getTowns'});
+    });
   }
-  // const getSuppliers = () => {
-      
-  //     //call get suppliers api here
-  //     return [
-  //       {
-  //         id: "qwertyuiop",
-  //         name: 'Supplier 1',
-  //       },
-  //       {
-  //         id: "asdfghjkl",
-  //         name: 'Supplier 2',
-  //       },
-  //       {
-  //         id: "zxcvbnm",
-  //         name: 'Supplier 3',
-  //       }
-  //     ]
-  // }
   
-  // const renderSuppliers = () => {
-  //   return getSuppliers().map(supplier => <option key={supplier.id} value={supplier.id}>{supplier.name}</option>)
-  // }
-  // const rendeProductCategories = () => {
-  //   return getProductCategories()
-  //   .map(category => <option key={category.id} value={category.id}>{category.name}</option>)
-  // }
+  React.useEffect(() => {
+    getTowns();
+  }, []);
   const initialValues = {
     id:'',
     name: '',
@@ -69,9 +41,14 @@ const AreaForm: React.FC<ComponentProps> = ({
   const validate = (values) => {
 
   }
-  // const onSubmit = (values) => {
-
-  // }
+  const onSubmit = (values) => {
+    addOneArea(values).then(res => {
+      toast.success(`${values.name} added successfully`);
+      formik.resetForm();
+    }).catch(err => {
+      toast.error(err.message || 'Something went wrong with adding area');
+    });
+  }
 
   const formik = useFormik({
     initialValues,
@@ -98,7 +75,7 @@ const AreaForm: React.FC<ComponentProps> = ({
               <div className={classes.column}>
                 <label htmlFor="towns">Towns</label>
                 <select className="form-control" id="towns" name="towns" multiple value={formik.values.towns} onChange={formik.handleChange}>
-                    {getTowns().map(town => <option key={town.id} value={town.id}>{town.name}</option>)}
+                    {towns}
                 </select>
               </div>
             </div>
