@@ -124,6 +124,22 @@ export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface
     },
     colorRed: {
       color: Colors.red,
+    },
+    qualtityButtonWrapper: {
+      width: '30px',
+      height: '20px',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+    },
+    centeredRow: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      width: '100%',
+
     }
   };
 });

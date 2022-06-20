@@ -29,7 +29,7 @@ export const POSEngine: React.FC<ComponentProps> = ({
 
   React.useEffect(() => {
     if(products){
-      setProductOptions(products.map(product => ({label: product.name, value: product})));
+      setProductOptions(products.map(product => ({label: `${product.id} - ${product.name}`, value: product})));
     }
   },[])
   
@@ -42,11 +42,41 @@ export const POSEngine: React.FC<ComponentProps> = ({
     setAddedProducts(addedProducts.filter(addedProduct => addedProduct !== product));
   }
 
-  const handleIncreaseQuantity = () => {
-
+  const handleIncreaseQuantity = (concernedProduct:any) => {
+    if(!concernedProduct)
+      return;
+    isLoading = true;
+    addedProducts.forEach(product => {
+      if(product.name === concernedProduct.name){
+        if(parseInt(product.quantity) < parseInt(product.unitsInStock)){
+          product.quantity = (parseInt(product.quantity)+ 1);
+          isLoading = false;
+          return;
+        } else {
+          toast.error('No more units in stock');
+          return;
+        }
+      }
+    });
+    setUpdateTrigger(!updateTrigger);
   }
-  const handleDecreaseQuantity = () => {
-    
+  const handleDecreaseQuantity = (concernedProduct:any) => {
+    if(!concernedProduct)
+      return;
+    isLoading = true;
+    addedProducts.forEach(product => {
+      if(product.name === concernedProduct.name){
+        if(parseInt(product.quantity) > 1){
+          product.quantity = (parseInt(product.quantity)- 1);
+          isLoading = false;
+          return;
+        } else {
+          toast.error('Minimum quantity is 1');
+          return;
+        }
+      }
+    });
+    setUpdateTrigger(!updateTrigger);
   }
 
   const renderAddedProducts = () => {
@@ -58,7 +88,21 @@ export const POSEngine: React.FC<ComponentProps> = ({
       return (
           <tr key={name}>
           <td>{name}</td>
-          <td>{quantity}</td>
+          <td>
+            <div className={classes.centeredRow}>
+              <div className={classes.qualtityButtonWrapper}>
+                <ButtonComponent
+                  onClick={()=>handleDecreaseQuantity(product)}
+                ><p>-</p></ButtonComponent>
+              </div>
+              {quantity}
+              <div className={classes.qualtityButtonWrapper}>
+                <ButtonComponent
+                  onClick={()=>handleIncreaseQuantity(product)}
+                ><p>+</p></ButtonComponent>
+              </div>
+            </div>
+          </td>
           <td>{unitPrice}</td>
           <td>{total}</td>
           <td>
@@ -76,15 +120,26 @@ export const POSEngine: React.FC<ComponentProps> = ({
   const handleProductAdd = () => {
     if(!selectedProduct)
       return;
+    
+    let addNewProduct = true; 
     isLoading = true;
     addedProducts.forEach(product => {
-      if(product.name === selectedProduct.name){
+      if(
+        (product.name === selectedProduct.name) &&
+        (parseInt(product.quantity)+ parseInt(quantity.toString())) <= parseInt(product.unitsInStock)
+      ){
         product.quantity = (parseInt(product.quantity)+ parseInt(quantity.toString()));
         isLoading = false;
+        addNewProduct = false;
         return;
       }
-    })
-    if(isLoading)
+      if((parseInt(product.quantity)+ parseInt(quantity.toString())) > parseInt(product.unitsInStock)){
+        toast.error("No more units in stock");
+        addNewProduct = false;
+        return;
+      }
+    });
+    if(isLoading && addNewProduct)
       setAddedProducts([...addedProducts, {...selectedProduct, quantity}]);
     renderAddedProducts();
   }
