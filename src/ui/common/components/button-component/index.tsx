@@ -16,9 +16,12 @@ interface ComponentProps {
 const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface) => {
   return {
     default: {
-      minWidth: 100,
-      minHeight: 42,
-      borderRadius: 10,
+      width: 100,
+      height: 40,
+      paddingTop: 5,
+      minWidth: 5,
+      minHeight: 5,
+      borderRadius: 5,
       background: 'none',
       border: 'none',
       fontWeight: 600,
