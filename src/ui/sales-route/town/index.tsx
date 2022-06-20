@@ -1,12 +1,13 @@
 import { useFormik } from 'formik'
 import React from 'react'
 import { Collapse } from 'react-bootstrap';
+import toast from 'react-hot-toast';
+import { addtown } from '../../../parser/town';
 import { Colors } from '../../common/colors';
 import ButtonComponent from '../../common/components/button-component';
 import { ComponentProps, useStylesFromThemeFunction } from './TownForm'
 
 const TownForm: React.FC<ComponentProps> = ({
-  onSubmit,
   onChange,
   product,
   options,
@@ -14,51 +15,6 @@ const TownForm: React.FC<ComponentProps> = ({
 }) => {
   const classes = useStylesFromThemeFunction();
   
-  // const getProductCategories = () => {
-
-  //   //call get product categories api here
-
-  //   return [
-  //     {
-  //       id: "qwertyuiop",
-  //       name: 'Category 1',
-  //     },
-  //     {
-  //       id: "asdfghjkl",
-  //       name: 'Category 2',
-  //     },
-  //     {
-  //       id: "zxcvbnm",
-  //       name: 'Category 3',
-  //     }
-  //   ]
-  // }
-  // const getSuppliers = () => {
-      
-  //     //call get suppliers api here
-  //     return [
-  //       {
-  //         id: "qwertyuiop",
-  //         name: 'Supplier 1',
-  //       },
-  //       {
-  //         id: "asdfghjkl",
-  //         name: 'Supplier 2',
-  //       },
-  //       {
-  //         id: "zxcvbnm",
-  //         name: 'Supplier 3',
-  //       }
-  //     ]
-  // }
-  
-  // const renderSuppliers = () => {
-  //   return getSuppliers().map(supplier => <option key={supplier.id} value={supplier.id}>{supplier.name}</option>)
-  // }
-  // const rendeProductCategories = () => {
-  //   return getProductCategories()
-  //   .map(category => <option key={category.id} value={category.id}>{category.name}</option>)
-  // }
   const initialValues = {
     id:'',
     name: '',
@@ -71,9 +27,14 @@ const TownForm: React.FC<ComponentProps> = ({
   const validate = (values) => {
 
   }
-  // const onSubmit = (values) => {
-
-  // }
+  const onSubmit = (values) => {
+    addtown(values).then(res => {
+      toast.success(`${values.name} added successfully`);
+      formik.resetForm();
+    }).catch(err => {
+      toast.error(err.message || 'Something went wrong with adding town');
+    });
+  }
 
   const formik = useFormik({
     initialValues,

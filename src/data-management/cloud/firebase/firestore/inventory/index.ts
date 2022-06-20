@@ -6,7 +6,7 @@ export const getInventory = async (id: string) => {
 }
 
 export const getInventories = async () => {
-    return await getDocuments(PRODUCTS_COLLECTION);
+    return (await getDocuments(PRODUCTS_COLLECTION)) as any[];
 }
 
 export const addInventory = async (data: any) => {
