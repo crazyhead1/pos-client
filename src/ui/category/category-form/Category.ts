@@ -1,14 +1,12 @@
 import {createUseStyles} from 'react-jss';
-import {Colors} from '../common/colors';
-import {ThemeInterface} from '../../interfaces/theme';
+import {Colors} from '../../common/colors';
+import {ThemeInterface} from '../../../interfaces/theme';
 
 export interface ComponentProps {
   onSubmit: (data: any, {}: any) => void;
-  onChange?: (data: any) => void;
+  categories?: any[];
   onImageChange?: (data: any) => void;
-  options?: {value: any; label: string | undefined}[];
   isLoading?: boolean;
-  product?: any;
   disabled?: boolean;
 }
 

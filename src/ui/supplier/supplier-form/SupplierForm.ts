@@ -3,7 +3,7 @@ import {Colors} from '../../common/colors';
 import {ThemeInterface} from '../../../interfaces/theme';
 
 export interface ComponentProps {
-  onSubmit: (data: any) => void;
+  onSubmit: (data: any, {}: any) => void;
   onChange?: (data: any) => void;
   onImageChange?: (data: any) => void;
   options?: {value: any; label: string | undefined}[];
