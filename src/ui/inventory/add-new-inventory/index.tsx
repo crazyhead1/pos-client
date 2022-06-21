@@ -1,8 +1,16 @@
 import React from 'react'
 import toast from 'react-hot-toast'
 import { addProductIntoInventory } from '../../../parser/inventory'
+import { getAllSuppliers } from '../../../parser/supplier'
 import { addLog } from '../../../services/cloud/firebase/logging'
 import InventoryForm from '../Inventory-form'
+
+// interface ComponentProps {
+//   onSubmit?: (values, {resetForm}) => void;
+//   onImageChange?: (images) => void;
+//   suppliers?: [];
+//   categories?: [];
+// }
 
 const AddNewInventory = () => {
 

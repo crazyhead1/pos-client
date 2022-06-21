@@ -12,6 +12,7 @@ import { ComponentProps, useStylesFromThemeFunction } from './POSEngine'
 import { Colors } from '../common/colors';
 import toast from 'react-hot-toast';
 import { addLog } from '../../services/cloud/firebase/logging';
+import { getProductsFromInventory } from '../../parser/inventory';
 
 export const POSEngine: React.FC<ComponentProps> = ({
   label,
@@ -30,6 +31,12 @@ export const POSEngine: React.FC<ComponentProps> = ({
   React.useEffect(() => {
     if(products){
       setProductOptions(products.map(product => ({label: `${product.id} - ${product.name}`, value: product})));
+    } else {
+      getProductsFromInventory().then(res => {
+        setProductOptions(res?.map(product => ({label: `${product.id} - ${product.name}`, value: product})));
+      }).catch(err=>{
+        toast.error(err.message || "Unable to fetch products. Please check internet connection")
+      })
     }
   },[])
   

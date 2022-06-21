@@ -1,4 +1,5 @@
 import { useFormik } from 'formik'
+import { values } from 'lodash';
 import React from 'react'
 import { Collapse } from 'react-bootstrap';
 import toast from 'react-hot-toast';
@@ -10,6 +11,7 @@ import ButtonComponent from '../../common/components/button-component';
 import { ComponentProps, useStylesFromThemeFunction } from './AreaForm'
 
 const AreaForm: React.FC<ComponentProps> = ({
+  onSubmit,
   onChange,
   product,
   options,
@@ -35,25 +37,18 @@ const AreaForm: React.FC<ComponentProps> = ({
   const initialValues = {
     id:'',
     name: '',
-    email: '',
     towns: [],
   }
   const validate = (values) => {
 
   }
-  const onSubmit = (values) => {
-    addOneArea(values).then(res => {
-      toast.success(`${values.name} added successfully`);
-      formik.resetForm();
-    }).catch(err => {
-      toast.error(err.message || 'Something went wrong with adding area');
-    });
-  }
 
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit
+    onSubmit:(values,{resetForm})=>{
+      onSubmit(values,{resetForm});
+    }
   });
 
   return (
@@ -83,7 +78,7 @@ const AreaForm: React.FC<ComponentProps> = ({
           <hr/>
         </div>
         <div className={classes.centeredRow}>
-          <ButtonComponent type="submit" style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
+          <ButtonComponent type="submit" disabled={formik.isSubmitting} style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
         </div>
       </form>
     </div>

@@ -58,9 +58,10 @@ const SupplierForm: React.FC<ComponentProps> = ({
   //   return getProductCategories()
   //   .map(category => <option key={category.id} value={category.id}>{category.name}</option>)
   // }
+
   const initialValues = {
     id:'',
-    companyName: '',
+    name: '',
     companyEmail: '',
     country: '',
     state: '',
@@ -89,7 +90,9 @@ const SupplierForm: React.FC<ComponentProps> = ({
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit
+    onSubmit:(values,{resetForm})=>{
+      onSubmit(values,{resetForm});
+    }
   });
 
   return (
@@ -103,8 +106,8 @@ const SupplierForm: React.FC<ComponentProps> = ({
                 <input type="text" className="form-control" id="id" name="id" value={formik.values.id} required onChange={formik.handleChange} />
               </div>
               <div className={classes.column}>
-                <label htmlFor="companyName">Company Name<span className={classes.colorRed}>*</span></label>
-                <input type="text" className="form-control" id="companyName" name="companyName" required value={formik.values.companyName} onChange={formik.handleChange} />
+                <label htmlFor="name">Company Name<span className={classes.colorRed}>*</span></label>
+                <input type="text" className="form-control" id="name" name="name" required value={formik.values.name} onChange={formik.handleChange} />
               </div>
               <div className={classes.column}>
                 <label htmlFor="companyEmail">Company Email</label>
@@ -182,7 +185,7 @@ const SupplierForm: React.FC<ComponentProps> = ({
           <hr/>
         </div>
         <div className={classes.centeredRow}>
-          <ButtonComponent type="submit" style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
+          <ButtonComponent type="submit" disabled={formik.isSubmitting} style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
         </div>
       </form>
     </div>
