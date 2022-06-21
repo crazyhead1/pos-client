@@ -1,32 +1,23 @@
 import {getDocument,getDocuments,addDocument,updateDocument,deleteDocument} from '../';
+import { SUB_CATEGORIES_COLLECTION } from '../../../../../ui/common/constants/collections';
 
 
-export const getCategory = async (id: string, type: 'categories_employees' | 'categories_customers' | 'categories_products' | 'categories_orders' | 'categories_suppliers' ) => {
+export const getCategory = async (id: string, type: string) => {
     return await getDocument(type, id);
 }
 
-export const getCategories = async (type: 'categories_employees' | 'categories_customers' | 'categories_products' | 'categories_orders' | 'categories_suppliers') => {
+export const getCategories = async (type: string) => {
     return await getDocuments(type);
 }
 
-export const getAllCategories = async () => {
-    return {
-        employees: await getCategories('categories_employees'),
-        customers: await getCategories('categories_customers'),
-        products: await getCategories('categories_products'),
-        orders: await getCategories('categories_orders'),
-        suppliers: await getCategories('categories_suppliers'),
-    };
-}
-
-export const addCategory = async (data: any, type: 'categories_employees' | 'categories_customers' | 'categories_products' | 'categories_orders' | 'categories_suppliers') => {
+export const addCategory = async (data: any, type: string) => {
     return await addDocument(type, data);
 }
 
-export const updateCategory = async (id: string, data: any, type: 'categories_employees' | 'categories_customers' | 'categories_products' | 'categories_orders' | 'categories_suppliers') => {
+export const updateCategory = async (id: string, data: any, type: string) => {
     return await updateDocument(type, id, data);
 }
 
-export const deleteCategory = async (id: string, type: 'categories_employees' | 'categories_customers' | 'categories_products' | 'categories_orders' | 'categories_suppliers') => {
+export const deleteCategory = async (id: string, type: string) => {
     return await deleteDocument(type, id);
 }

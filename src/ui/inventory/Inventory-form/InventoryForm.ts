@@ -6,7 +6,8 @@ export interface ComponentProps {
   onSubmit: (data: any) => void;
   onChange?: (data: any) => void;
   onImageChange?: (data: any) => void;
-  options?: {value: any; label: string | undefined}[];
+  suppliers?: any[];
+  categories?: any[];
   isLoading?: boolean;
   product?: any;
   disabled?: boolean;

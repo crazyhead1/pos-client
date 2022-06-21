@@ -7,7 +7,7 @@ export interface ComponentProps {
   label?: string;
   options?: {value: any; label: string | undefined}[];
   isLoading?: boolean;
-  products: any[];
+  products?: any[];
   disabled?: boolean;
 }
 

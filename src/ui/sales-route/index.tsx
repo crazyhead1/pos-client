@@ -11,6 +11,7 @@ import ButtonComponent from '../common/components/button-component';
 import { ComponentProps, useStylesFromThemeFunction } from './SalesRouteForm'
 
 const SalesRouteForm: React.FC<ComponentProps> = ({
+  onSubmit,
   onChange,
   product,
   options,
@@ -54,19 +55,13 @@ const SalesRouteForm: React.FC<ComponentProps> = ({
   const validate = (values) => {
 
   }
-  const onSubmit = (values) => {
-    addOneSalesRoute(values).then(res => {
-      toast.success(`${values.name} added successfully`);
-      formik.resetForm();
-    }).catch(err => {
-      toast.error(err.message || 'Something went wrong with adding route');
-    });
-  }
 
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit
+    onSubmit:(values,{resetForm})=>{
+      onSubmit(values,{resetForm});
+    }
   });
 
   return (
@@ -102,7 +97,7 @@ const SalesRouteForm: React.FC<ComponentProps> = ({
           <hr/>
         </div>
         <div className={classes.centeredRow}>
-          <ButtonComponent type="submit" style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
+          <ButtonComponent type="submit" disabled={formik.isSubmitting} style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
         </div>
       </form>
     </div>

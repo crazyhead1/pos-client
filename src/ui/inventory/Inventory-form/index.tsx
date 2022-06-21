@@ -1,63 +1,52 @@
 import { useFormik } from 'formik'
 import React from 'react'
+import { getCategories } from '../../../parser/categories';
+import { getAllSuppliers } from '../../../parser/supplier';
 import { Colors } from '../../common/colors';
 import ButtonComponent from '../../common/components/button-component';
+import { CATEGORIES } from '../../common/constants';
+import { SUB_CATEGORIES_COLLECTION } from '../../common/constants/collections';
 import { ComponentProps, useStylesFromThemeFunction } from './InventoryForm'
 
 const InventoryForm: React.FC<ComponentProps> = ({
   onSubmit,
   onChange,
   product,
-  options,
+  suppliers,
+  categories,
   onImageChange,
 }) => {
   const classes = useStylesFromThemeFunction();
-  
-  const getProductCategories = () => {
+  const [renderedSuppliers, setRenderedSuppliers] = React.useState<any[]>([]);
+  const [renderedCategories, setRenderedCategories] = React.useState<any[]>([]);
 
-    //call get product categories api here
-
-    return [
-      {
-        id: "qwertyuiop",
-        name: 'Category 1',
-      },
-      {
-        id: "asdfghjkl",
-        name: 'Category 2',
-      },
-      {
-        id: "zxcvbnm",
-        name: 'Category 3',
-      }
-    ]
+  const getSuppliers = async () => {
+    if(suppliers) {
+      return suppliers;
+    }
+    const supplyers = await getAllSuppliers();
+    return supplyers
   }
-  const getSuppliers = () => {
-      
-      //call get suppliers api here
-      return [
-        {
-          id: "qwertyuiop",
-          name: 'Supplier 1',
-        },
-        {
-          id: "asdfghjkl",
-          name: 'Supplier 2',
-        },
-        {
-          id: "zxcvbnm",
-          name: 'Supplier 3',
-        }
-      ]
+  const getProductCategories = async () => {
+    if (categories) {
+      return categories;
+    }
+    const productCategories = await getCategories(SUB_CATEGORIES_COLLECTION.PRODUCTS)
+    return productCategories
   }
   
-  const renderSuppliers = () => {
-    return getSuppliers().map(supplier => <option key={supplier.id} value={supplier.id}>{supplier.name}</option>)
+  const renderSuppliers = async () => {
+    return setRenderedSuppliers((await getSuppliers())
+    .map(supplier => <option key={supplier.id} value={supplier.id}>{supplier.name}</option>));
   }
-  const rendeProductCategories = () => {
-    return getProductCategories()
-    .map(category => <option key={category.id} value={category.id}>{category.name}</option>)
+  const rendeProductCategories = async () => {
+    return setRenderedCategories((await getProductCategories())
+    .map(category => <option key={category.id} value={category.id}>{category.name}</option>))
   }
+  React.useEffect(() => {
+    renderSuppliers()
+    rendeProductCategories()
+  }, []);
   const initialValues = {
     id:'',
     name: '',
@@ -105,7 +94,7 @@ const InventoryForm: React.FC<ComponentProps> = ({
                 <div className={classes.column}>
                   <label htmlFor="category">Category<span className={classes.colorRed}>*</span></label>
                   <select className="form-control" id="category" name="category" required value={formik.values.category} onChange={formik.handleChange}>
-                    {rendeProductCategories()}
+                    {renderedCategories}
                   </select>
                 </div>
               </div>
@@ -138,7 +127,7 @@ const InventoryForm: React.FC<ComponentProps> = ({
             <div className="form-group">
               <label htmlFor="supplierId">Supplier</label>
               <select className="form-control" id="supplierId" name="supplierId" value={formik.values.supplierId} onChange={formik.handleChange}>
-                {renderSuppliers()}
+                {renderedSuppliers}
               </select>
             </div>
           </div>
@@ -151,7 +140,7 @@ const InventoryForm: React.FC<ComponentProps> = ({
           </div>
         </div>
         <div className={classes.centeredRow}>
-          <ButtonComponent type="submit" style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
+          <ButtonComponent type="submit" disabled={formik.isSubmitting} style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
         </div>
       </form>
     </div>

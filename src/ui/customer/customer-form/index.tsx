@@ -86,7 +86,9 @@ const CustomerForm: React.FC<ComponentProps> = ({
   const formik = useFormik({
     initialValues,
     validate,
-    onSubmit
+    onSubmit:(values,{resetForm})=>{
+      onSubmit(values,{resetForm});
+    }
   });
 
   return (
@@ -169,7 +171,7 @@ const CustomerForm: React.FC<ComponentProps> = ({
           <hr/>
         </div>
         <div className={classes.centeredRow}>
-          <ButtonComponent type="submit" style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
+          <ButtonComponent type="submit" disabled={formik.isSubmitting} style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
         </div>
       </form>
     </div>
