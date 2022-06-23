@@ -8,7 +8,7 @@ import { ComponentProps, useStylesFromThemeFunction } from './CustomerForm'
 const CustomerForm: React.FC<ComponentProps> = ({
   onSubmit,
   onChange,
-  product,
+  customer,
   options,
   onImageChange,
 }) => {
@@ -61,20 +61,20 @@ const CustomerForm: React.FC<ComponentProps> = ({
   //   .map(category => <option key={category.id} value={category.id}>{category.name}</option>)
   // }
   const initialValues = {
-    id:'',
-    name: '',
-    email: '',
-    country: '',
-    state: '',
-    address: '',
-    phoneNumber: '',
-    zipCode: '',
+    id: customer?.id || '',
+    name: customer?.name || '',
+    email: customer?.email || '',
+    country: customer?.country || '',
+    state: customer?.state || '',
+    address: customer?.address || '',
+    phoneNumber: customer?.phoneNumber || '',
+    zipCode: customer?.zipCode || '',
     //Shipping Information
-    shippingCountry: '',
-    shippingState: '',
-    shippingAddress: '',
-    shippingAddressLandmark: '',
-    shippingZipCode: '',
+    shippingCountry: customer?.shippingCountry || '',
+    shippingState: customer?.shippingState || '',
+    shippingAddress: customer?.shippingAddress || '',
+    shippingAddressLandmark: customer?.shippingAddressLandmark || '',
+    shippingZipCode: customer?.shippingZipCode || '',
   }
   const validate = (values) => {
 

@@ -6,7 +6,9 @@ import Table from '../../common/components/table'
 import { useStylesFromThemeFunction } from './InventoryList';
 import toast from 'react-hot-toast';
 import { Modal } from 'react-bootstrap';
-import {getProductsFromInventory } from '../../../parser/inventory';
+import {getProductsFromInventory, editProductFromInventory } from '../../../parser/inventory';
+import InventoryForm from '../Inventory-form';
+import ButtonComponent from '../../common/components/button-component';
 
 interface ComponentProps {
   products?: any[];
@@ -18,7 +20,7 @@ const InventoryList: React.FC<ComponentProps> = (props) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState({} as any);
   const [products, setProducts] = React.useState(props?.products as any[] | [] as any[]);
-  //const [showEditModal, setShowEditModal] = React.useState(false);
+  const [showProductUpdateModal, setShowProductUpdateModal] = React.useState(false);
 
   // const handleCloseEditModal = () => setShowEditModal(false);
   // const handleShowEditModal = (product: any) => {
@@ -51,15 +53,18 @@ const InventoryList: React.FC<ComponentProps> = (props) => {
     
   }
   const handleEditProduct = (product: any) => {
-    try{
-      // call edit product api here
-      
-      console.log(product);
-      toast.success('Product updated successfully');
-      }catch(e){
-        toast.error('Error while updating product');
-        console.log(e.message);
-      }
+    setSelectedProduct(product);
+    setShowProductUpdateModal(true);
+  }
+  const handleUpdate = (updatedProduct: any) => {
+    // call edit product api here
+    editProductFromInventory(updatedProduct.id, updatedProduct).then(res => {
+      toast.success(`${updatedProduct.name} updated successfully`);
+      setShowProductUpdateModal(false);
+      setSelectedProduct({} as any);
+    }).catch(e => {
+      toast.error(e.message || 'Error while updating product');
+    });
   }
   const renderTableData = () => {
     return products?.map(product => {
@@ -93,6 +98,16 @@ const InventoryList: React.FC<ComponentProps> = (props) => {
         renderBody={renderTableData}
         loading={isLoading}
       />
+      <Modal className={classes.modalWrapper} show={showProductUpdateModal} onHide={()=>setShowProductUpdateModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Update {selectedProduct.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className={classes.modalBodyWrapper}>
+            <InventoryForm product={selectedProduct} onSubmit={handleUpdate}/>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   )
 }

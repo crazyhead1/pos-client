@@ -1,5 +1,6 @@
 import { useFormik } from 'formik'
 import React from 'react'
+import { Col, Row } from 'react-bootstrap';
 import { getCategories } from '../../../parser/categories';
 import { getAllSuppliers } from '../../../parser/supplier';
 import { Colors } from '../../common/colors';
@@ -48,16 +49,16 @@ const InventoryForm: React.FC<ComponentProps> = ({
     rendeProductCategories()
   }, []);
   const initialValues = {
-    id:'',
-    name: '',
-    unitPrice: '',
-    unitsInStock: '',
-    supplyPrice: '',
-    category: '',
-    description: '',
-    taxPerUnit: '',
-    images: [],
-    supplierId: '',
+    id:product?.id || '',
+    name: product?.name || '',
+    unitPrice: product?.unitPrice || '',
+    unitsInStock: product?.unitsInStock || '',
+    supplyPrice: product?.supplyPrice || '',
+    category: product?.category || '',
+    description: product?.description || '',
+    taxPerUnit: product?.taxPerUnit || '',
+    images: product?.images || [],
+    supplierId: product?.supplierId || '',
 
   }
   const validate = (values) => {
@@ -77,67 +78,73 @@ const InventoryForm: React.FC<ComponentProps> = ({
     
   },[formik.values.images])
   return (
-    <div>
+    <div className={classes.formBackground}>
       <form onSubmit={formik.handleSubmit}>
         <div className={classes.container}>
-          <div className={classes.innerContainerLeft}>
-            <div className="form-group">
-              <div className={classes.row}>
-                <div className={classes.column}>
-                  <label htmlFor="id">Barcode<span className={classes.colorRed}>*</span> <span className={classes.labelHintWrapper}>Scan or Type Barcode below</span></label>
-                  <input type="text" className="form-control" id="id" name="id" required value={formik.values.id} onChange={formik.handleChange} />
+          <Row>
+            <Col md={9} sm={8}>
+              <div >
+                <div className="form-group">
+                  <div className={classes.row}>
+                    <div className={classes.column}>
+                      <label htmlFor="id">Barcode<span className={classes.colorRed}>*</span> <span className={classes.labelHintWrapper}>Scan or Type Barcode below</span></label>
+                      <input type="text" className="form-control" id="id" name="id" required value={formik.values.id} onChange={formik.handleChange} />
+                    </div>
+                    <div className={classes.column}>
+                      <label htmlFor="name">Name<span className={classes.colorRed}>*</span></label>
+                      <input type="text" className="form-control" id="name" name="name" required value={formik.values.name} onChange={formik.handleChange} />
+                    </div>
+                    <div className={classes.column}>
+                      <label htmlFor="category">Category<span className={classes.colorRed}>*</span></label>
+                      <select className="form-control" id="category" name="category" required value={formik.values.category} onChange={formik.handleChange}>
+                        {renderedCategories}
+                      </select>
+                    </div>
+                  </div>
+                  <label htmlFor="description">Description</label>
+                  <textarea className="form-control" id="description" name="description" value={formik.values.description} onChange={formik.handleChange} />
                 </div>
-                <div className={classes.column}>
-                  <label htmlFor="name">Name<span className={classes.colorRed}>*</span></label>
-                  <input type="text" className="form-control" id="name" name="name" required value={formik.values.name} onChange={formik.handleChange} />
+                <hr/>
+                <div className="form-group">
+                  <div className={classes.row}>
+                    <div className={classes.column}>
+                      <label htmlFor="unitPrice">Sale Price<span className={classes.colorRed}>*</span></label>
+                      <input type="number" className="form-control" id="unitPrice" required name="unitPrice" value={formik.values.unitPrice} onChange={formik.handleChange} />
+                    </div>
+                    <div className={classes.column}>
+                      <label htmlFor="supplyPrice">Supply Price</label>
+                      <input type="number" className="form-control" id="supplyPrice" name="supplyPrice" value={formik.values.supplyPrice} onChange={formik.handleChange} />
+                    </div>
+                    <div className={classes.column}>
+                      <label htmlFor="unitsInStock">Units in Stock<span className={classes.colorRed}>*</span></label>
+                      <input type="number" className="form-control" id="unitsInStock" required name="unitsInStock" value={formik.values.unitsInStock} onChange={formik.handleChange} />
+                    </div>
+                  </div>
                 </div>
-                <div className={classes.column}>
-                  <label htmlFor="category">Category<span className={classes.colorRed}>*</span></label>
-                  <select className="form-control" id="category" name="category" required value={formik.values.category} onChange={formik.handleChange}>
-                    {renderedCategories}
+                <hr/>
+                <div className="form-group">
+                  <label htmlFor="taxPerUnit">Tax Per Unit</label>
+                  <input type="text" className="form-control" id="taxPerUnit" name="taxPerUnit" value={formik.values.taxPerUnit} onChange={formik.handleChange} />
+                </div>
+                <hr/>
+                <div className="form-group">
+                  <label htmlFor="supplierId">Supplier</label>
+                  <select className="form-control" id="supplierId" name="supplierId" value={formik.values.supplierId} onChange={formik.handleChange}>
+                    {renderedSuppliers}
                   </select>
                 </div>
               </div>
-              <label htmlFor="description">Description</label>
-              <textarea className="form-control" id="description" name="description" value={formik.values.description} onChange={formik.handleChange} />
-            </div>
-            <hr/>
-            <div className="form-group">
-              <div className={classes.row}>
-                <div className={classes.column}>
-                  <label htmlFor="unitPrice">Sale Price<span className={classes.colorRed}>*</span></label>
-                  <input type="number" className="form-control" id="unitPrice" required name="unitPrice" value={formik.values.unitPrice} onChange={formik.handleChange} />
-                </div>
-                <div className={classes.column}>
-                  <label htmlFor="supplyPrice">Supply Price</label>
-                  <input type="number" className="form-control" id="supplyPrice" name="supplyPrice" value={formik.values.supplyPrice} onChange={formik.handleChange} />
-                </div>
-                <div className={classes.column}>
-                  <label htmlFor="unitsInStock">Units in Stock<span className={classes.colorRed}>*</span></label>
-                  <input type="number" className="form-control" id="unitsInStock" required name="unitsInStock" value={formik.values.unitsInStock} onChange={formik.handleChange} />
+            </Col>
+            <Col md={3} sm={4}>
+              <div >
+                <label htmlFor="images">Images</label>
+                <input type="file" className="form-control" id="images" name="images" value={formik.values.images} multiple onChange={formik.handleChange} />
+                <div>
+                  {formik.values.images.map(image => <img key={image as React.Key} src={image} />)}
                 </div>
               </div>
-            </div>
-            <hr/>
-            <div className="form-group">
-              <label htmlFor="taxPerUnit">Tax Per Unit</label>
-              <input type="text" className="form-control" id="taxPerUnit" name="taxPerUnit" value={formik.values.taxPerUnit} onChange={formik.handleChange} />
-            </div>
-            <hr/>
-            <div className="form-group">
-              <label htmlFor="supplierId">Supplier</label>
-              <select className="form-control" id="supplierId" name="supplierId" value={formik.values.supplierId} onChange={formik.handleChange}>
-                {renderedSuppliers}
-              </select>
-            </div>
-          </div>
-          <div className={classes.innerContainerRight}>
-            <label htmlFor="images">Images</label>
-            <input type="file" className="form-control" id="images" name="images" value={formik.values.images} multiple onChange={formik.handleChange} />
-            <div>
-              {formik.values.images.map(image => <img key={image as React.Key} src={image} />)}
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
         <div className={classes.centeredRow}>
           <ButtonComponent type="submit" disabled={formik.isSubmitting} style={{width:'100%', height:'50px'}}><h4><b>Submit</b></h4></ButtonComponent>
