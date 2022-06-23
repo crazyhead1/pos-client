@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import {  Tab, Tabs } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { addOneArea } from '../../parser/area';
-import { addOneCategory } from '../../parser/categories';
 import { addOneCustomer } from '../../parser/customer';
 import { addOneEmployee } from '../../parser/employee';
-import { addOneSalesRoute } from '../../parser/sales-route';
 import { addOneSupplier } from '../../parser/supplier';
-import { addtown } from '../../parser/town';
-import AddNewInventory from './add-new-inventory';
-import InventoryList from './inventory-list';
-import {useStylesFromThemeFunction,ComponentProps} from './Inventory'
 import 'boxicons';
+import Customer from '../customer';
+import Supplier from '../supplier';
+import Employee from '../employee';
 
-const Inventory: React.FC<ComponentProps> = ({
+interface ComponentProps {
+
+}
+
+const Users: React.FC<ComponentProps> = ({
 
 }) => {
-  const classes = useStylesFromThemeFunction();
+  //const classes = useStylesFromThemeFunction();
   // const [activeTab,setActiveTab] = useState('pos');
   const [showSidebar,setShowSidebar] = useState(true);
     const onSubmitSupplier = (values,{resetForm})=>{
@@ -33,38 +33,6 @@ const Inventory: React.FC<ComponentProps> = ({
             resetForm();
           }).catch(err => {
             toast.error(err.message || 'Something went wrong with adding customer');
-          });
-    }
-    const onSubmitTown = (values,{ resetForm })=>{
-        addtown(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding town');
-          });
-    }
-    const onSubmitArea = (values,{resetForm})=>{
-        addOneArea(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding area');
-          });
-    }
-    const onSubmitSalesRoute = (values,{resetForm})=>{
-        addOneSalesRoute(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding route');
-          });
-    }
-    const onSubmitCategory = (values,{resetForm})=>{
-        addOneCategory(values,values.type).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding category');
           });
     }
     const onSubmitEmployee = (values,{resetForm})=>{
@@ -134,15 +102,18 @@ const Inventory: React.FC<ComponentProps> = ({
     // }
 
   return (
-    <Tabs defaultActiveKey="add" className="mb-3">
-        <Tab eventKey="add" title="Add Product">
-            <AddNewInventory />
+    <Tabs defaultActiveKey="customer" className="mb-3">
+        <Tab eventKey="customer" title="Customer">
+            <Customer />
         </Tab>
-        <Tab eventKey="list" title="Inventory">
-            <InventoryList />
+        <Tab eventKey="supplier" title="Supplier">
+            <Supplier />
+        </Tab>
+        <Tab eventKey="employee" title="Employee">
+            <Employee />
         </Tab>
     </Tabs>
   )
 }
 
-export default Inventory;
+export default Users;

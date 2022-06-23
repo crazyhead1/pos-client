@@ -15,12 +15,17 @@ export interface ComponentProps {
 
 export const useStylesFromThemeFunction = createUseStyles((theme: ThemeInterface) => {
   return {
+    formBackground: {
+      backgroundColor: Colors.blueGrayLight,
+    },
     container: {
         width: '100%',
         height: '100%',
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: Colors.white,
+        padding: '10px',
+        margin: '2px',
+        backgroundColor: Colors.blueGrayLight,
     },
     innerContainerLeft: {
         width: '70%',
