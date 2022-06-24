@@ -7,7 +7,7 @@ import { ComponentProps, useStylesFromThemeFunction } from './EmployeeForm'
 const EmployeeForm: React.FC<ComponentProps> = ({
   onSubmit,
   onChange,
-  product,
+  employee,
   options,
   onImageChange,
 }) => {
@@ -60,28 +60,28 @@ const EmployeeForm: React.FC<ComponentProps> = ({
   // }
 
   const initialValues = {
-    id:'',
-    name: '',
-    email: '',
-    fatherName: '',
-    country: '',
-    state: '',
-    city: '',
-    address: '',
-    zipCode: '',
-    nationality: '',
-    phoneNumber: '',
-    landLineNumber: '',
-    gender: '',
-    religion : '',
-    dateOfBirth:'',
+    id: employee?.id || '',
+    name: employee?.name || '',
+    email: employee?.email || '',
+    fatherName: employee?.fatherName || '',
+    country: employee?.country || '',
+    state: employee?.state || '',
+    city: employee?.city || '',
+    address: employee?.address || '',
+    zipCode: employee?.zipCode || '',
+    nationality: employee?.nationality || '',
+    phoneNumber: employee?.phoneNumber || '',
+    landLineNumber: employee?.landLineNumber || '',
+    gender: employee?.gender || '',
+    religion : employee?.religion || '',
+    dateOfBirth: employee?.dateOfBirth || '',
     //Job Information
-    department:'',
-    designation:'',
-    appointmentDate: '',
-    appointmentBranch:'',
-    joiningDate: '',
-    active: '',
+    department: employee?.department || '',
+    designation: employee?.designation || '',
+    appointmentDate: employee?.appointmentDate || '',
+    appointmentBranch: employee?.appointmentBranch || '',
+    joiningDate: employee?.joiningDate || '',
+    active: employee?.active || '',
   }
   const validate = (values) => {
 
@@ -112,6 +112,8 @@ const EmployeeForm: React.FC<ComponentProps> = ({
                 <label htmlFor="name">Name<span className={classes.colorRed}>*</span></label>
                 <input type="text" className="form-control" id="name" name="name" required value={formik.values.name} onChange={formik.handleChange} />
               </div>
+            </div>
+            <div className={classes.row}>
               <div className={classes.column}>
                 <label htmlFor="fatherName">Father Name</label>
                 <input type="text" className="form-control" id="fatherName" name="fatherName" value={formik.values.fatherName} onChange={formik.handleChange} />
@@ -192,6 +194,8 @@ const EmployeeForm: React.FC<ComponentProps> = ({
                 <label htmlFor="designation">Designation<span className={classes.colorRed}>*</span></label>
                 <input type="text" className="form-control" id="designation" name="designation" required value={formik.values.designation} onChange={formik.handleChange} />
               </div>
+            </div>
+            <div className={classes.row}>
               <div className={classes.column}>
                 <label htmlFor="appointmentDate">Appointment Date<span className={classes.colorRed}>*</span></label>
                 <input type="date" className="form-control" id="appointmentDate" name="appointmentDate" required value={formik.values.appointmentDate} onChange={formik.handleChange} />
