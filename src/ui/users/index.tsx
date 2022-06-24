@@ -18,31 +18,31 @@ const Users: React.FC<ComponentProps> = ({
 }) => {
   //const classes = useStylesFromThemeFunction();
   // const [activeTab,setActiveTab] = useState('pos');
-  const [showSidebar,setShowSidebar] = useState(true);
-    const onSubmitSupplier = (values,{resetForm})=>{
-        addOneSupplier(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding supplier');
-          });
-    }
-    const onSubmitCustomer = (values,{resetForm})=>{
-        addOneCustomer(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding customer');
-          });
-    }
-    const onSubmitEmployee = (values,{resetForm})=>{
-      addOneEmployee(values).then(res => {
-        toast.success(`${values.name} added successfully`);
-        resetForm();
-      }).catch(err => {
-        toast.error(err.message || 'Something went wrong with adding employee');
-      });
-    }
+  // const [showSidebar,setShowSidebar] = useState(true);
+  //   const onSubmitSupplier = (values,{resetForm})=>{
+  //       addOneSupplier(values).then(res => {
+  //           toast.success(`${values.name} added successfully`);
+  //           resetForm();
+  //         }).catch(err => {
+  //           toast.error(err.message || 'Something went wrong with adding supplier');
+  //         });
+  //   }
+  //   const onSubmitCustomer = (values,{resetForm})=>{
+  //       addOneCustomer(values).then(res => {
+  //           toast.success(`${values.name} added successfully`);
+  //           resetForm();
+  //         }).catch(err => {
+  //           toast.error(err.message || 'Something went wrong with adding customer');
+  //         });
+  //   }
+  //   const onSubmitEmployee = (values,{resetForm})=>{
+  //     addOneEmployee(values).then(res => {
+  //       toast.success(`${values.name} added successfully`);
+  //       resetForm();
+  //     }).catch(err => {
+  //       toast.error(err.message || 'Something went wrong with adding employee');
+  //     });
+  //   }
     // const products = [
     //     {
     //       id: "qwertyuiop",

@@ -99,7 +99,7 @@ const CustomerList: React.FC<ComponentProps> = (props) => {
       />
       <Modal className={classes.modalWrapper} show={showCustomerUpdateModal} onHide={()=>setShowCustomerUpdateModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Update {selectedCustomer.name}</Modal.Title>
+          <Modal.Title>Update <b>{selectedCustomer.name}</b></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className={classes.modalBodyWrapper}>

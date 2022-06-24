@@ -19,62 +19,62 @@ const Inventory: React.FC<ComponentProps> = ({
   const classes = useStylesFromThemeFunction();
   // const [activeTab,setActiveTab] = useState('pos');
   const [showSidebar,setShowSidebar] = useState(true);
-    const onSubmitSupplier = (values,{resetForm})=>{
-        addOneSupplier(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding supplier');
-          });
-    }
-    const onSubmitCustomer = (values,{resetForm})=>{
-        addOneCustomer(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding customer');
-          });
-    }
-    const onSubmitTown = (values,{ resetForm })=>{
-        addtown(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding town');
-          });
-    }
-    const onSubmitArea = (values,{resetForm})=>{
-        addOneArea(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding area');
-          });
-    }
-    const onSubmitSalesRoute = (values,{resetForm})=>{
-        addOneSalesRoute(values).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding route');
-          });
-    }
-    const onSubmitCategory = (values,{resetForm})=>{
-        addOneCategory(values,values.type).then(res => {
-            toast.success(`${values.name} added successfully`);
-            resetForm();
-          }).catch(err => {
-            toast.error(err.message || 'Something went wrong with adding category');
-          });
-    }
-    const onSubmitEmployee = (values,{resetForm})=>{
-      addOneEmployee(values).then(res => {
-        toast.success(`${values.name} added successfully`);
-        resetForm();
-      }).catch(err => {
-        toast.error(err.message || 'Something went wrong with adding employee');
-      });
-    }
+    // const onSubmitSupplier = (values,{resetForm})=>{
+    //     addOneSupplier(values).then(res => {
+    //         toast.success(`${values.name} added successfully`);
+    //         resetForm();
+    //       }).catch(err => {
+    //         toast.error(err.message || 'Something went wrong with adding supplier');
+    //       });
+    // }
+    // const onSubmitCustomer = (values,{resetForm})=>{
+    //     addOneCustomer(values).then(res => {
+    //         toast.success(`${values.name} added successfully`);
+    //         resetForm();
+    //       }).catch(err => {
+    //         toast.error(err.message || 'Something went wrong with adding customer');
+    //       });
+    // }
+    // const onSubmitTown = (values,{ resetForm })=>{
+    //     addtown(values).then(res => {
+    //         toast.success(`${values.name} added successfully`);
+    //         resetForm();
+    //       }).catch(err => {
+    //         toast.error(err.message || 'Something went wrong with adding town');
+    //       });
+    // }
+    // const onSubmitArea = (values,{resetForm})=>{
+    //     addOneArea(values).then(res => {
+    //         toast.success(`${values.name} added successfully`);
+    //         resetForm();
+    //       }).catch(err => {
+    //         toast.error(err.message || 'Something went wrong with adding area');
+    //       });
+    // }
+    // const onSubmitSalesRoute = (values,{resetForm})=>{
+    //     addOneSalesRoute(values).then(res => {
+    //         toast.success(`${values.name} added successfully`);
+    //         resetForm();
+    //       }).catch(err => {
+    //         toast.error(err.message || 'Something went wrong with adding route');
+    //       });
+    // }
+    // const onSubmitCategory = (values,{resetForm})=>{
+    //     addOneCategory(values,values.type).then(res => {
+    //         toast.success(`${values.name} added successfully`);
+    //         resetForm();
+    //       }).catch(err => {
+    //         toast.error(err.message || 'Something went wrong with adding category');
+    //       });
+    // }
+    // const onSubmitEmployee = (values,{resetForm})=>{
+    //   addOneEmployee(values).then(res => {
+    //     toast.success(`${values.name} added successfully`);
+    //     resetForm();
+    //   }).catch(err => {
+    //     toast.error(err.message || 'Something went wrong with adding employee');
+    //   });
+    // }
     // const products = [
     //     {
     //       id: "qwertyuiop",

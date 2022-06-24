@@ -7,7 +7,7 @@ import { ComponentProps, useStylesFromThemeFunction } from './SupplierForm'
 const SupplierForm: React.FC<ComponentProps> = ({
   onSubmit,
   onChange,
-  product,
+  supplier,
   options,
   onImageChange,
 }) => {
@@ -60,25 +60,25 @@ const SupplierForm: React.FC<ComponentProps> = ({
   // }
 
   const initialValues = {
-    id:'',
-    name: '',
-    companyEmail: '',
-    country: '',
-    state: '',
-    address: '',
-    companyPhoneNumber: '',
-    zipCode: '',
-    industry: '',
-    productServiceDescription: '',
+    id: supplier?.id || '',
+    name: supplier?.name || '',
+    companyEmail: supplier?.companyEmail || '',
+    country: supplier?.country || '',
+    state: supplier?.state || '',
+    address: supplier?.address || '',
+    companyPhoneNumber: supplier?.companyPhoneNumber || '',
+    zipCode: supplier?.zipCode || '',
+    industry: supplier?.industry || '',
+    productServiceDescription: supplier?.productServiceDescription || '',
     //mianContactInfo
-    mainContactName: '',
-    mainContactCompanyPosition: '',
-    mainContactEmail : '',
-    mainContactPhoneNumber: '',
+    mainContactName: supplier?.mainContactName || '',
+    mainContactCompanyPosition: supplier?.mainContactCompanyPosition || '',
+    mainContactEmail: supplier?.mainContactEmail || '',
+    mainContactPhoneNumber: supplier?.mainContactPhoneNumber || '',
     //Additional Information
-    additionalInfromation: '',
-    additionalFile: '',
-    comment: '',
+    additionalInfromation: supplier?.additionalInfromation || '',
+    additionalFile: supplier?.additionalFile || '',
+    comment: supplier?.comment || '',
   }
   const validate = (values) => {
 

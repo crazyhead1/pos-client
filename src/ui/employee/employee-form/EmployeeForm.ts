@@ -8,7 +8,7 @@ export interface ComponentProps {
   onImageChange?: (data: any) => void;
   options?: {value: any; label: string | undefined}[];
   isLoading?: boolean;
-  product?: any;
+  employee?: any;
   disabled?: boolean;
 }
 
