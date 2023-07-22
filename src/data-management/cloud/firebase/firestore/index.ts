@@ -39,10 +39,12 @@ export const getDocuments = async (collectionName: string): Promise<any> => {
 export const addDocument = async (collectionName: string, data: any): Promise<any> => {
     try {
         const existingDocRef = await getDoc(doc(firebaseFirestore, `${collectionName}/${data?.id}`));
+        console.log({existingDocRef})
         if (existingDocRef?.data()) {
             throw new Error("Already exists");
         }
         const docRef = await setDoc(doc(firebaseFirestore, collectionName,data?.id), data);
+        console.log({docRef})
         return docRef;
       } catch (error: any) {
         throw new Error(error);
